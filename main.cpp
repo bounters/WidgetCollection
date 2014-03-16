@@ -2,11 +2,15 @@
 #include <QGraphicsView>
 #include <QGraphicsItem>
 #include <QDebug>
+#include <QDeclarativeView>
+#include <QDeclarativeComponent>
+#include <QDeclarativeEngine>
+#include <QDir>
+
 
 #include <widget/widgetloader.h>
 #include <widget/analogclock.h>
 #include <widget/samplewidget.h>
-
 
 int main(int argc, char *argv[])
 {
@@ -27,6 +31,15 @@ int main(int argc, char *argv[])
     SampleWidget *widget = new SampleWidget;
     widget->move(0,300);
     scene.addWidget(widget);
+
+
+    //Place a qml Widget
+     QDeclarativeEngine *engine = new QDeclarativeEngine;
+     QDeclarativeComponent component(engine, QUrl::fromLocalFile("qml/QMLBusTimetable.qml"));
+     QGraphicsObject *object =
+         qobject_cast<QGraphicsObject *>(component.create());
+     object->moveBy(300,300);
+     scene.addItem(object);
 
      view.showMaximized();
      //Fullscreen:
