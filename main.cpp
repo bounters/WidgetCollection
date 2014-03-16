@@ -34,12 +34,10 @@ int main(int argc, char *argv[])
 
 
     //Place a qml Widget
-     QDeclarativeEngine *engine = new QDeclarativeEngine;
-     QDeclarativeComponent component(engine, QUrl::fromLocalFile("qml/QMLBusTimetable.qml"));
-     QGraphicsObject *object =
-         qobject_cast<QGraphicsObject *>(component.create());
-     object->moveBy(300,300);
-     scene.addItem(object);
+    QDeclarativeView *qmlView = new QDeclarativeView;
+    qmlView->setSource(QUrl::fromLocalFile("qml/QMLBusTimetable.qml"));
+    scene.addWidget(qmlView);
+    qmlView->move(300,300);
 
      view.showMaximized();
      //Fullscreen:

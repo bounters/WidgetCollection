@@ -23,10 +23,16 @@ HEADERS  += \
     widget/samplewidget.h \
 
 OTHER_FILES += \
-    qml/QMLBusTimetable.qml
+    qml/Sample.qml \
+    qml/QMLBusTimetable.qml \
+    qml/config.png
 
 #Add qml Files here
-APP_QML_FILES.files = qml/QMLBusTimetable.qml
+APP_QML_FILES.files += \
+    qml/Sample.qml \
+    qml/QMLBusTimetable.qml \
+    qml/config.png
+
 #Change to OS dependent resources file
 APP_QML_FILES.path = Contents/MacOS/qml/
 QMAKE_BUNDLE_DATA += APP_QML_FILES
